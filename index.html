@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="es-AR">
 <head>
@@ -27,7 +28,6 @@
     :root{
       --bg:#0b0b0e;
       --card: rgba(255,255,255,.10);
-      --card2: rgba(255,255,255,.14);
       --stroke: rgba(255,255,255,.14);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.70);
@@ -41,6 +41,8 @@
             radial-gradient(900px 650px at 85% 20%, rgba(170,255,190,.12), transparent 60%),
             radial-gradient(900px 750px at 50% 85%, rgba(255,160,210,.10), transparent 62%),
             linear-gradient(180deg, rgba(255,255,255,.04), transparent 35%);
+
+      --wa: #25D366;
     }
 
     *{ box-sizing:border-box; }
@@ -62,11 +64,11 @@
     .bg::after{
       content:"";
       position:absolute; inset:-30px;
-      background-image: url("https://iili.io/fmO6T8P.jpg");
+      background-image: url("https://iili.io/fmO6T8P.jpg"); /* OVERLAY (el que pediste) */
       background-size: cover;
       background-position: center;
       background-repeat:no-repeat;
-      opacity:.12;            /* overlay visible pero suave */
+      opacity:.12; /* visible pero suave */
       filter: saturate(1.05) contrast(1.05);
       transform: translateZ(0);
     }
@@ -156,10 +158,13 @@
       background: rgba(255,255,255,.14);
     }
 
-    .wappIcon{
+    /* WhatsApp SVG icon */
+    .waSvg{
       width:18px; height:18px;
-      object-fit:contain;
+      display:inline-block;
       flex: 0 0 auto;
+      color: var(--wa);
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
     }
 
     /* Hero */
@@ -425,9 +430,9 @@
       justify-content:center;
       transform: translateZ(0);
     }
-    .floatWapp img{
-      width: 30px; height: 30px;
-      object-fit: contain;
+    .floatWapp .waSvg{
+      width:30px; height:30px;
+      color: var(--wa);
       filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
     }
     .floatWapp:hover{ transform: translateY(-1px); }
@@ -444,6 +449,13 @@
 </head>
 
 <body>
+  <!-- WhatsApp SVG (inline, símbolo + use) -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="ico-whatsapp" viewBox="0 0 448 512">
+      <path fill="currentColor" d="M380.9 97.1C339-3.7 216.8-40.6 123.9 0.6 48.8 34.6 0 109.7 0 192.6c0 34.2 9.2 67.8 26.7 97.4L0 480l196.6-25.8c28.4 14.8 60.2 22.6 92.4 22.6h.1c106.1 0 192.5-86.3 192.5-192.4 0-51.3-20-99.5-56.2-135.7zM288.9 438.5h-.1c-28.8 0-57.1-7.7-81.8-22.3l-5.9-3.5-116.7 15.3 15.6-113.7-3.8-6.1c-16-25.6-24.5-55.1-24.5-85.4C71.7 135.6 141.3 66 227.9 66c42.1 0 81.6 16.4 111.3 46.1 29.7 29.7 46.1 69.2 46.1 111.3 0 86.6-69.6 156.1-156.4 156.1zm90.6-117.2c-5-2.5-29.6-14.6-34.2-16.3-4.6-1.7-8-2.5-11.3 2.5-3.3 5-13 16.3-15.9 19.6-2.9 3.3-5.9 3.8-10.9 1.3-5-2.5-21.1-7.8-40.2-24.9-14.9-13.3-25-29.8-28-34.8-2.9-5-0.3-7.7 2.2-10.2 2.3-2.3 5-5.9 7.5-8.8 2.5-2.9 3.3-5 5-8.4 1.7-3.3 0.8-6.3-0.4-8.8-1.3-2.5-11.3-27.2-15.5-37.3-4.1-9.8-8.2-8.5-11.3-8.6-2.9-.1-6.3-.1-9.6-.1-3.3 0-8.8 1.3-13.4 6.3-4.6 5-17.6 17.2-17.6 41.9 0 24.7 18 48.6 20.5 52 2.5 3.3 35.4 54.1 85.7 75.8 12 5.2 21.4 8.3 28.7 10.6 12.1 3.9 23.1 3.3 31.8 2 9.7-1.4 29.6-12.1 33.8-23.8 4.2-11.7 4.2-21.7 2.9-23.8-1.2-2.1-4.6-3.4-9.6-5.9z"/>
+    </symbol>
+  </svg>
+
   <div class="bg" aria-hidden="true"></div>
 
   <!--
@@ -468,7 +480,7 @@
 
         <div class="actions">
           <a class="btn primary" id="btnWappTop" href="#" rel="noopener">
-            <img class="wappIcon" src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+            <svg class="waSvg" role="img" aria-label="WhatsApp"><use href="#ico-whatsapp"></use></svg>
             WhatsApp
           </a>
         </div>
@@ -491,7 +503,7 @@
 
             <div class="ctaRow">
               <a class="btn primary" id="btnWappHero" href="#" rel="noopener">
-                <img class="wappIcon" src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+                <svg class="waSvg" role="img" aria-label="WhatsApp"><use href="#ico-whatsapp"></use></svg>
                 Quiero una asesoría
               </a>
               <a class="btn ghost" href="#como">
@@ -528,7 +540,7 @@
             </div>
 
             <a class="btn primary" id="btnWappCard" href="#" rel="noopener" style="width:100%;">
-              <img class="wappIcon" src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+              <svg class="waSvg" role="img" aria-label="WhatsApp"><use href="#ico-whatsapp"></use></svg>
               Consultar por WhatsApp
             </a>
           </div>
@@ -641,7 +653,7 @@
           </div>
 
           <a class="btn primary" id="btnWappFinal" href="#" rel="noopener">
-            <img class="wappIcon" src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+            <svg class="waSvg" role="img" aria-label="WhatsApp"><use href="#ico-whatsapp"></use></svg>
             Escribirme ahora
           </a>
         </div>
@@ -660,7 +672,7 @@
 
   <!-- WhatsApp flotante -->
   <a class="floatWapp" id="btnWappFloat" href="#" aria-label="WhatsApp" rel="noopener">
-    <img src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+    <svg class="waSvg" role="img" aria-label="WhatsApp"><use href="#ico-whatsapp"></use></svg>
   </a>
 
   <script>
@@ -690,3 +702,4 @@
   </script>
 </body>
 </html>
+```
