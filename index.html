@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0b0b0e" />
+
+  <title>Moutys — Asesorías de cultivo legal (indoor y exterior)</title>
+  <meta name="description" content="Ayudo a personas a cultivar cannabis de forma legal y sin errores. Indoor y exterior · espacios chicos · principiantes. Asesorías personalizadas." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Moutys — Asesorías de cultivo legal (indoor y exterior)" />
+  <meta property="og:description" content="Indoor y exterior · espacios chicos · principiantes. Asesorías personalizadas para evitar errores y mejorar resultados." />
+  <meta property="og:image" content="https://iili.io/fmOLF0x.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Moutys — Asesorías de cultivo legal" />
+  <meta name="twitter:description" content="Asesorías personalizadas. Indoor y exterior · espacios chicos · principiantes." />
+  <meta name="twitter:image" content="https://iili.io/fmOLF0x.png" />
+
+  <link rel="icon" href="https://iili.io/fmOLF0x.png" />
+
+  <style>
+    :root{
+      --bg:#0b0b0e;
+      --card: rgba(255,255,255,.10);
+      --card2: rgba(255,255,255,.14);
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.58);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+
+      /* degrade (no franjas) */
+      --g1: radial-gradient(1200px 700px at 15% 10%, rgba(108,214,255,.16), transparent 55%),
+            radial-gradient(900px 650px at 85% 20%, rgba(170,255,190,.12), transparent 60%),
+            radial-gradient(900px 750px at 50% 85%, rgba(255,160,210,.10), transparent 62%),
+            linear-gradient(180deg, rgba(255,255,255,.04), transparent 35%);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x:hidden;
+    }
+
+    /* Fondo con overlay + degrade */
+    .bg{
+      position:fixed; inset:0;
+      background: var(--g1);
+      z-index:-3;
+    }
+    .bg::after{
+      content:"";
+      position:absolute; inset:-30px;
+      background-image: url("https://iili.io/fmO6T8P.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat:no-repeat;
+      opacity:.12;            /* overlay visible pero suave */
+      filter: saturate(1.05) contrast(1.05);
+      transform: translateZ(0);
+    }
+    .bg::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,11,14,.84), rgba(11,11,14,.70) 35%, rgba(11,11,14,.88));
+      z-index:1;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{
+      width:min(1120px, 100%);
+      margin:0 auto;
+      padding: 0 18px;
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: rgba(11,11,14,.58);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 0;
+    }
+    .brand img{
+      width:44px; height:44px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.10);
+      flex: 0 0 auto;
+    }
+    .brand .txt{
+      display:flex; flex-direction:column;
+      line-height:1.1;
+      min-width:0;
+    }
+    .brand .txt strong{
+      font-size: 16px;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand .txt span{
+      font-size: 12.5px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .actions{
+      display:flex; gap:10px; align-items:center;
+      flex: 0 0 auto;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
+      user-select:none;
+      max-width: 100%;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+
+    .btn.primary{
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.14);
+    }
+
+    .wappIcon{
+      width:18px; height:18px;
+      object-fit:contain;
+      flex: 0 0 auto;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 30px 0 18px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .heroCard{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .heroLeft{
+      padding: 22px;
+      min-height: 320px;
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 12.5px;
+      width: fit-content;
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4.4vw, 44px);
+      letter-spacing: -0.6px;
+      line-height: 1.05;
+    }
+    .lead{
+      margin: 0 0 16px;
+      font-size: clamp(14.5px, 1.7vw, 18px);
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 62ch;
+    }
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .ghost{
+      background: rgba(255,255,255,.06);
+    }
+    .mini{
+      margin-top: 14px;
+      color: var(--muted2);
+      font-size: 12.5px;
+      line-height:1.35;
+    }
+
+    .heroRight{
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+    .profile{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+    .profile img{
+      width:56px; height:56px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 14px 36px rgba(0,0,0,.45);
+    }
+    .profile .pTxt strong{
+      display:block;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .profile .pTxt span{
+      display:block;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .list{
+      display:grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .li{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      padding: 12px 12px;
+      color: var(--muted);
+      line-height: 1.35;
+      font-size: 13.5px;
+    }
+
+    /* Sections */
+    section{
+      padding: 18px 0;
+    }
+    .sectionHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .sectionHead p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.10);
+      box-shadow: 0 12px 38px rgba(0,0,0,.38);
+      padding: 14px;
+      min-width:0;
+    }
+    .card h3{
+      margin:0 0 6px;
+      font-size: 15px;
+      letter-spacing:.2px;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height:1.45;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1;
+    }
+
+    .steps{
+      display:grid;
+      gap: 10px;
+    }
+    .step{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.08);
+      padding: 12px;
+    }
+    .n{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.10);
+      display:flex; align-items:center; justify-content:center;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+    .step strong{
+      display:block;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+    .step span{
+      display:block;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.4;
+    }
+
+    /* CTA final */
+    .ctaFinal{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:flex;
+      justify-content:space-between;
+      gap: 14px;
+      align-items:center;
+      flex-wrap: wrap;
+    }
+    .ctaFinal .txt h2{
+      margin:0 0 4px;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .ctaFinal .txt p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height:1.45;
+      max-width: 70ch;
+    }
+
+    /* Footer */
+    footer{
+      padding: 20px 0 90px; /* deja espacio para botón flotante */
+      color: var(--muted2);
+      font-size: 12.5px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 10px;
+    }
+
+    /* Botón flotante */
+    .floatWapp{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 50;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.12);
+      box-shadow: 0 18px 52px rgba(0,0,0,.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transform: translateZ(0);
+    }
+    .floatWapp img{
+      width: 30px; height: 30px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+    }
+    .floatWapp:hover{ transform: translateY(-1px); }
+    .floatWapp:active{ transform: translateY(0px) scale(.99); }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .heroLeft, .heroRight{ min-height: unset; }
+      .grid3{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <!--
+    IMPORTANTE:
+    Reemplazá WHATSAPP_LINK por el link real cuando te lo confirmen.
+    Ejemplo: https://wa.me/54911XXXXXXXXXX?text=Hola%20Moutys%2C%20quiero%20una%20asesor%C3%ADa
+  -->
+  <script>
+    window.WHATSAPP_LINK = "https://wa.me/54911XXXXXXXXXX?text=Hola%20Moutys%2C%20quiero%20una%20asesor%C3%ADa";
+  </script>
+
+  <header>
+    <div class="wrap">
+      <div class="bar">
+        <a class="brand" href="#top" aria-label="Ir al inicio">
+          <img src="https://iili.io/fmOLF0x.png" alt="Logo Moutys" />
+          <div class="txt">
+            <strong>Moutys</strong>
+            <span>Asesorías de cultivo legal (indoor y exterior)</span>
+          </div>
+        </a>
+
+        <div class="actions">
+          <a class="btn primary" id="btnWappTop" href="#" rel="noopener">
+            <img class="wappIcon" src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div class="heroCard heroLeft">
+            <div class="badge">🌱 Indoor y exterior · espacios chicos · principiantes</div>
+
+            <h1>Cultivá cannabis legal, sin errores y sin perder plata.</h1>
+            <p class="lead">
+              Te ayudo a ordenar tu cultivo con un plan claro y personalizado.
+              Ideal si estás empezando o si ya venís con problemas y no sabés qué ajustar.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn primary" id="btnWappHero" href="#" rel="noopener">
+                <img class="wappIcon" src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+                Quiero una asesoría
+              </a>
+              <a class="btn ghost" href="#como">
+                Ver cómo trabajo
+              </a>
+            </div>
+
+            <div class="chips" aria-label="Para quién es">
+              <div class="chip">Estoy empezando de cero</div>
+              <div class="chip">Tengo problemas y no sé qué ajustar</div>
+              <div class="chip">Quiero mejorar resultados</div>
+            </div>
+
+            <p class="mini">
+              Asesoría personalizada: me contás tu caso y te devuelvo un plan simple, aplicable y sin vueltas.
+            </p>
+          </div>
+
+          <div class="heroCard heroRight">
+            <div>
+              <div class="profile">
+                <img src="https://iili.io/fmOLF0x.png" alt="Moutys" />
+                <div class="pTxt">
+                  <strong>Moutys</strong>
+                  <span>Emprendedor · Asesorías personalizadas</span>
+                </div>
+              </div>
+
+              <div class="list" style="margin-top:12px;">
+                <div class="li">🌱 Ayudo a personas a cultivar cannabis de forma legal y sin errores</div>
+                <div class="li">📍 Indoor y exterior · espacios chicos · principiantes</div>
+                <div class="li">🧠 Asesorías personalizadas (plan + ajustes)</div>
+              </div>
+            </div>
+
+            <a class="btn primary" id="btnWappCard" href="#" rel="noopener" style="width:100%;">
+              <img class="wappIcon" src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Servicios</h2>
+            <p>Simple, directo y orientado a resultados.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>Asesoría personalizada</h3>
+            <p>Revisamos tu caso, detecto errores y te dejo un plan claro para avanzar.</p>
+          </div>
+
+          <div class="card">
+            <h3>Indoor (espacios chicos)</h3>
+            <p>Optimización del espacio, rutinas y ajustes para que funcione sin complicarte.</p>
+          </div>
+
+          <div class="card">
+            <h3>Exterior</h3>
+            <p>Guía por etapas y recomendaciones prácticas para mejorar el proceso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>¿Cómo es la asesoría?</h2>
+            <p>Un proceso simple para ordenar tu cultivo.</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="steps">
+              <div class="step">
+                <div class="n">1</div>
+                <div>
+                  <strong>Me contás tu caso</strong>
+                  <span>Espacio, etapa, objetivo y qué problema querés resolver.</span>
+                </div>
+              </div>
+              <div class="step">
+                <div class="n">2</div>
+                <div>
+                  <strong>Te doy un plan claro</strong>
+                  <span>Qué hacer y qué evitar, con pasos concretos y prioridad.</span>
+                </div>
+              </div>
+              <div class="step">
+                <div class="n">3</div>
+                <div>
+                  <strong>Ajustes y seguimiento</strong>
+                  <span>Si hace falta, afinamos el plan y corregimos rumbo.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Beneficios</h3>
+            <p style="margin-bottom:10px;">Lo que más suele cambiar cuando ordenás el proceso:</p>
+            <div class="steps">
+              <div class="step">
+                <div class="n">✓</div>
+                <div>
+                  <strong>Menos errores comunes</strong>
+                  <span>Te ahorro pruebas que salen caras.</span>
+                </div>
+              </div>
+              <div class="step">
+                <div class="n">✓</div>
+                <div>
+                  <strong>Ahorro de tiempo</strong>
+                  <span>Vas a lo importante con un plan claro.</span>
+                </div>
+              </div>
+              <div class="step">
+                <div class="n">✓</div>
+                <div>
+                  <strong>Resultados más estables</strong>
+                  <span>Mejor control y mejores decisiones.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="cta">
+      <div class="wrap">
+        <div class="ctaFinal">
+          <div class="txt">
+            <h2>¿Querés que lo veamos y te digo qué conviene hacer?</h2>
+            <p>Escribime por WhatsApp y lo ordenamos con un plan simple, claro y aplicable.</p>
+          </div>
+
+          <a class="btn primary" id="btnWappFinal" href="#" rel="noopener">
+            <img class="wappIcon" src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+            Escribirme ahora
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+          <div>© <span id="y"></span> Moutys</div>
+          <div style="opacity:.9;">Demo</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- WhatsApp flotante -->
+  <a class="floatWapp" id="btnWappFloat" href="#" aria-label="WhatsApp" rel="noopener">
+    <img src="https://iili.io/fm1NjzQ.jpg" alt="WhatsApp" />
+  </a>
+
+  <script>
+    // Año footer
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Set WhatsApp links
+    const w = window.WHATSAPP_LINK || "#";
+    ["btnWappTop","btnWappHero","btnWappCard","btnWappFinal","btnWappFloat"].forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.href = w;
+      el.target = "_blank";
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const href = a.getAttribute("href");
+        if(!href || href === "#") return;
+        const t = document.querySelector(href);
+        if(!t) return;
+        e.preventDefault();
+        t.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
